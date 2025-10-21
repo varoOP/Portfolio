@@ -26,9 +26,9 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=builder /app/build /usr/share/nginx/html
 
 # Create necessary nginx directories with full permissions
-RUN mkdir -p /var/run/nginx /var/cache/nginx /var/log/nginx && \
-    chmod -R 777 /var/run/nginx /var/cache/nginx /var/log/nginx && \
-    chown -R nginx:nginx /var/run/nginx /var/cache/nginx /var/log/nginx /usr/share/nginx/html
+RUN mkdir -p /var/cache/nginx /var/log/nginx /tmp && \
+    chmod -R 777 /var/cache/nginx /var/log/nginx /tmp && \
+    chown -R nginx:nginx /var/cache/nginx /var/log/nginx /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
