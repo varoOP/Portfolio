@@ -25,11 +25,10 @@ COPY nginx.conf /etc/nginx/nginx.conf
 # Copy built React app from builder stage
 COPY --from=builder /app/build /usr/share/nginx/html
 
-# Create necessary nginx directories
-RUN mkdir -p /var/run/nginx /var/cache/nginx /var/log/nginx
-
-# Set proper ownership for nginx directories
-RUN chown -R nginx:nginx /var/run/nginx /var/cache/nginx /var/log/nginx /usr/share/nginx/html
+# Create necessary nginx directories with full permissions
+RUN mkdir -p /var/run/nginx /var/cache/nginx /var/log/nginx && \
+    chmod -R 777 /var/run/nginx /var/cache/nginx /var/log/nginx && \
+    chown -R nginx:nginx /var/run/nginx /var/cache/nginx /var/log/nginx /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
