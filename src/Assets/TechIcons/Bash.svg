@@ -1,0 +1,28 @@
+<svg width="50" height="24px" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bashGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4EAA25;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2E7D32;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="25" cy="25" r="24" fill="url(#bashGradient)" stroke="#1B5E20" stroke-width="2"/>
+  
+  <!-- Terminal window -->
+  <rect x="12" y="16" width="26" height="18" rx="2" fill="#000" stroke="#4EAA25" stroke-width="0.8"/>
+  
+  <!-- Terminal header -->
+  <rect x="12" y="16" width="26" height="4" rx="2" fill="#333"/>
+  <circle cx="14" cy="18" r="0.6" fill="#ff5f56"/>
+  <circle cx="16" cy="18" r="0.6" fill="#ffbd2e"/>
+  <circle cx="18" cy="18" r="0.6" fill="#27ca3f"/>
+  
+  <!-- Terminal prompt -->
+  <text x="14" y="24" font-family="monospace" font-size="2" fill="#4EAA25">$</text>
+  <text x="16" y="24" font-family="monospace" font-size="2" fill="#fff">bash</text>
+  
+  <!-- Command line -->
+  <text x="14" y="28" font-family="monospace" font-size="1.8" fill="#4EAA25">$ ls</text>
+  <text x="14" y="31" font-family="monospace" font-size="1.8" fill="#fff">file</text>
+</svg>

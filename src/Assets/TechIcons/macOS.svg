@@ -1,0 +1,31 @@
+<svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="macosGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#007AFF;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#5856D6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#AF52DE;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="25" cy="25" r="24" fill="url(#macosGradient)" stroke="#1D1D1F" stroke-width="2"/>
+  
+  <!-- macOS logo - Apple logo with terminal elements -->
+  <g transform="translate(25, 25)">
+    <!-- Apple logo silhouette -->
+    <path d="M-8,-12 C-8,-16 -4,-18 0,-18 C4,-18 8,-16 8,-12 C8,-8 4,-6 0,-6 C-4,-6 -8,-8 -8,-12 Z" fill="#fff"/>
+    <path d="M-6,-10 C-6,-13 -3,-15 0,-15 C3,-15 6,-13 6,-10 C6,-7 3,-5 0,-5 C-3,-5 -6,-7 -6,-10 Z" fill="none" stroke="#000" stroke-width="0.5"/>
+    
+    <!-- Terminal window -->
+    <rect x="-6" y="2" width="12" height="8" rx="1" fill="#000" stroke="#00ff00" stroke-width="0.5"/>
+    
+    <!-- Terminal header dots -->
+    <circle cx="-4" cy="3" r="0.5" fill="#ff5f56"/>
+    <circle cx="-2" cy="3" r="0.5" fill="#ffbd2e"/>
+    <circle cx="0" cy="3" r="0.5" fill="#27ca3f"/>
+    
+    <!-- Terminal content -->
+    <text x="-5" y="6" font-family="monospace" font-size="2" fill="#00ff00">$</text>
+    <text x="-4" y="6" font-family="monospace" font-size="2" fill="#fff">macOS</text>
+  </g>
+</svg>
