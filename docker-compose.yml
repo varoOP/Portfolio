@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  portfolio:
+    image: your-username/portfolio:latest  # Replace with your Docker Hub username
+    container_name: portfolio-website
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"  # For future SSL setup
+    environment:
+      - NODE_ENV=production
+    volumes:
+      # Optional: Mount custom nginx config
+      # - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - portfolio_logs:/var/log/nginx
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - portfolio-network
+
+volumes:
+  portfolio_logs:
+    driver: local
+
+networks:
+  portfolio-network:
+    driver: bridge
