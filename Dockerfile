@@ -25,19 +25,11 @@ COPY nginx.conf /etc/nginx/nginx.conf
 # Copy built React app from builder stage
 COPY --from=builder /app/build /usr/share/nginx/html
 
-# Create a non-root user for file ownership
-RUN addgroup -g 1001 -S nodejs && \
-    adduser -S nextjs -u 1001
+# Create necessary nginx directories
+RUN mkdir -p /var/run/nginx /var/cache/nginx /var/log/nginx
 
-# Change ownership of nginx directories to non-root user
-RUN chown -R nextjs:nodejs /usr/share/nginx/html && \
-    chown -R nextjs:nodejs /var/cache/nginx && \
-    chown -R nextjs:nodejs /var/log/nginx && \
-    chown -R nextjs:nodejs /etc/nginx/conf.d
-
-# Create nginx pid directory
-RUN mkdir -p /var/run/nginx && \
-    chown -R nginx:nginx /var/run/nginx
+# Set proper ownership for nginx directories
+RUN chown -R nginx:nginx /var/run/nginx /var/cache/nginx /var/log/nginx /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
