@@ -5,25 +5,23 @@ This guide explains how to deploy your portfolio using Docker containers.
 ## 🐳 How It Works
 
 1. **GitHub Actions** builds a Docker image on every tagged release
-2. **Docker Hub** stores the image for easy pulling
+2. **GitHub Container Registry (ghcr.io)** stores the image for easy pulling
 3. **Your server** pulls and runs the latest image
 
 ## 🚀 Quick Setup
 
-### 1. GitHub Secrets
+### 1. GitHub Container Registry
 
-Add these secrets to your GitHub repository (Settings → Secrets):
-
-| Secret | Description | Example |
-|--------|-------------|---------|
-| `DOCKER_USERNAME` | Your Docker Hub username | `yourusername` |
-| `DOCKER_PASSWORD` | Your Docker Hub password/token | `yourpassword` |
+No additional secrets needed! The workflow uses:
+- `GITHUB_TOKEN` (automatically provided)
+- `github.actor` (your GitHub username)
+- `github.repository` (your repository name)
 
 ### 2. Deploy to Your Server
 
 ```bash
 # Pull the latest image
-docker pull your-username/portfolio:latest
+docker pull ghcr.io/your-username/portfolio:latest
 
 # Run with docker-compose
 docker-compose up -d
@@ -33,14 +31,14 @@ docker run -d \
   --name portfolio-website \
   -p 80:80 \
   --restart unless-stopped \
-  your-username/portfolio:latest
+  ghcr.io/your-username/portfolio:latest
 ```
 
 ### 3. Update Deployment
 
 ```bash
 # Pull latest image
-docker pull your-username/portfolio:latest
+docker pull ghcr.io/your-username/portfolio:latest
 
 # Stop current container
 docker-compose down
@@ -67,7 +65,7 @@ docker-compose up -d
 3. **GitHub Actions will automatically:**
    - Build your React app
    - Create a Docker image
-   - Push to Docker Hub
+   - Push to GitHub Container Registry (ghcr.io)
 
 ## 🔧 Configuration
 
@@ -209,7 +207,7 @@ docker image prune -f
 
 ```bash
 # Run in debug mode
-docker run -it --rm your-username/portfolio:latest sh
+docker run -it --rm ghcr.io/your-username/portfolio:latest sh
 ```
 
 ---

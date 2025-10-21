@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   portfolio:
-    image: your-username/portfolio:latest  # Replace with your Docker Hub username
+    image: ghcr.io/your-username/portfolio:latest  # Replace with your GitHub username
     container_name: portfolio-website
     restart: unless-stopped
     ports:
